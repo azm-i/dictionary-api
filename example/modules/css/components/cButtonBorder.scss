@@ -1,0 +1,95 @@
+$component: '.cButtonBorder';
+
+#{$component} {
+  display: inline-block;
+  position: relative;
+  @include media-pc {
+    width: size-variable-pc(102);
+    height: size-variable-pc(69);
+  }
+
+  &-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+  }
+
+  &-text {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  &-mark {
+    flex-shrink: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: #2a3e69;
+    @include media-pc {
+      width: size-variable-pc(20);
+      height: size-variable-pc(16);
+    }
+    @include browser-ie {
+      overflow: hidden;
+    }
+    @include media-sp {
+      right: size-variable-sp(50);
+    }
+    &.-min {
+      @include media-pc {
+        width: size-variable-pc(18);
+        height: size-variable-pc(15);
+      }
+      @include media-sp {
+        width: size-variable-sp(16);
+        height: size-variable-sp(12);
+      }
+    }
+  }
+
+  &-sticky {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-border {
+    display: block;
+    fill: none;
+    stroke: #999;
+    stroke-width: 1px;
+    transform: rotate(90deg) scale(-1);
+    @include browser-ie {
+      transform: rotate(90deg) scale(1);
+    }
+
+    ellipse {
+      &:nth-child(1) {
+        opacity: 0.38;
+      }
+    }
+  }
+}

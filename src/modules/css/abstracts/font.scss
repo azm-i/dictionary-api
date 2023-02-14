@@ -1,0 +1,173 @@
+//
+// font
+//
+
+/// @group font
+$font-family-gothic: YuGothic, '游ゴシック', 'Hiragino Kaku Gothic ProN',
+  'Hiragino Sans', Meiryo, sans-serif;
+/// @group font
+$font-family-mincho: YuMincho, '游明朝', 'Times New Roman',
+  'Hiragino Mincho ProN', 'HGS明朝B', 'ＭＳ Ｐ明朝', serif;
+/// @group font
+$font-family-en: 'Inter', $font-family-gothic;
+
+/// ブラウザのデフォルトフォントサイズ ※不変
+/// @group font
+$font-size-browser: 16px;
+/// ブラウザのデフォルトフォントサイズ (SP) ※不変
+/// @group font
+$font-size-browser-sp: 16px * 2;
+
+/// @group font
+$font-size-base-px: 14px;
+/// @group font
+$font-size-base: math.div($font-size-base-px, $font-size-browser) * 1rem;
+/// @group font
+$font-size-base-px-sp: 13px * 2;
+/// @group font
+$font-size-base-sp: math.div($font-size-base-px-sp, $font-size-browser-sp) *
+  1rem;
+
+/// @group font
+$font-weight-regular: 400;
+/// @group font
+$font-weight-medium: 500;
+/// @group font
+$font-weight-bold: 600;
+
+/// ウィンドウ幅によって可変になるフォントサイズ（最小・最大値込み）
+/// @param {Number(any)} $font-size[14px] - デザイン上のフォントサイズ(px)
+/// @param {Number(any)} $min[$font-size * ($base-width-min / $base-width-pc)] - 最小値(px)
+/// @example
+/// .selector {
+///   @include font-size-variable-pc(20px);
+///   @include font-size-variable-pc(20px, 12px);
+/// }
+/// @group font
+@mixin font-size-variable-pc($font-size, $min: 0) {
+  $font-size: if($font-size, $font-size, $font-size-base-px);
+  $min: if(
+    $min > 0,
+    $min,
+    if(
+      $enableMinFontSize and
+        remove-unit($font-size * math.div($base-width-min, $base-width-pc)) < 10,
+      10px,
+      0
+    )
+  );
+
+  font-size: size-variable-pc($font-size);
+  @if $min > 0 {
+    @media screen and (max-width: #{math.ceil($base-width-pc * math.div(remove-unit($min), remove-unit($font-size)))}) {
+      font-size: remove-unit($min) * 1px;
+    }
+  }
+}
+
+/// ウィンドウ幅によって可変になるフォントサイズ（最小・最大値込み） (SP)
+/// @param {Number(any)} $font-size[13px * 2] - デザイン上のフォントサイズ(px)
+/// @param {Number(any)} $min[$font-size * ($base-width-min-sp / $base-width-sp)] - 最小値(px)
+/// @example
+/// .selector {
+///   @include font-size-variable-sp(30px);
+///   @include font-size-variable-sp(30px, 12px);
+/// }
+/// @group font
+@mixin font-size-variable-sp($font-size: $font-size-base-px-sp, $min: 0) {
+  $min: if(
+    $min > 0,
+    $min,
+    if(
+      $enableMinFontSize and
+        remove-unit($font-size * math.div($base-width-min-sp, $base-width-sp)) <
+        20,
+      20px,
+      0
+    )
+  );
+
+  font-size: size-variable-sp($font-size);
+  @if $min > 0 {
+    @media screen and (max-width: #{sp-px(math.ceil($base-width-sp * math.div(remove-unit($min), remove-unit($font-size))))}) {
+      font-size: sp-px($min);
+    }
+  }
+}
+
+/// 日本語フォント
+/// @group font
+@mixin font-jp-regular() {
+  font-weight: $font-weight-regular;
+}
+
+/// @group font
+@mixin font-jp-medium() {
+  font-weight: $font-weight-medium;
+}
+
+/// @group font
+@mixin font-jp-bold() {
+  font-weight: $font-weight-bold;
+  @include browser-android {
+    font-weight: 700;
+  }
+}
+
+/// @group font
+@mixin font-jp() {
+  @include font-jp-medium();
+}
+
+/// 英字フォント
+/// @group font
+@mixin font-en-regular() {
+  font-family: $font-family-en;
+  font-weight: 400;
+}
+
+/// @group font
+@mixin font-en-medium() {
+  font-family: $font-family-en;
+  font-weight: 500;
+}
+
+/// @group font
+@mixin font-en-semi-bold() {
+  font-family: $font-family-en;
+  font-weight: 600;
+}
+
+/// @group font
+@mixin font-en-bold() {
+  font-family: $font-family-en;
+  font-weight: 700;
+}
+
+/// @group font
+@mixin font-en-extra-bold() {
+  font-family: $font-family-en;
+  font-weight: 800;
+}
+
+/// @group font
+@mixin font-en() {
+  @include font-en-regular();
+}
+
+/// 縁取り（透過）
+/// @group font
+@mixin text-stroke($width: 1px, $color: currentColor) {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: $width $color;
+}
+
+/// 縁取り（塗りつぶし）
+/// @group font
+@mixin text-stroke-fill($color-fill, $width: 1px, $color: currentColor) {
+  color: $color-fill;
+  text-shadow: $color $width 0, $color (-$width) 0, $color 0 (-$width),
+    $color 0 $width, $color $width $width, $color (-$width) $width,
+    $color $width (-$width), $color (-$width) (-$width);
+}

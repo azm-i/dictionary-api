@@ -1,0 +1,24 @@
+include /../../../src/modules/pug/functions/**/*.pug
+include /config.pug
+
+block variables
+
+include /../../../src/modules/pug/utils/**/*.pug
+include /components/**/*.pug
+
+if IS_PHP
+  block php
+
+doctype html
+html(lang=LANG class={ '-full': IS_FULL })
+  head
+    include /../../../src/modules/pug/partial/head.pug
+
+  body(id=ID)
+    if GTM_ID
+      include /../../../src/modules/pug/partial/gtm-body.pug
+
+    block body
+    block scriptsBody
+
+    //- include /../../../src/modules/pug/partial/webFont/typekit.pug

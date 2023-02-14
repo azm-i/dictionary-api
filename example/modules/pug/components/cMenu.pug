@@ -1,0 +1,9 @@
+mixin cMenu(option = {})
+  .cModal.cMenu(data-modal="menu" data-el)
+    .cModal-content.cMenu-content(data-ref)
+      div menu
+      div: a(href=getFullPath("/") data-transition="menu") index page
+      div: a(href=getFullPath("/about/") data-transition="menu") about page
+
+    .cModal-backdrop(data-ref)
+    .cModal-close(data-ref) close

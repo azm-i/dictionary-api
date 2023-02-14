@@ -1,0 +1,16 @@
+mixin cMarquee(text, option = {})
+  -
+    const {
+      isManual = false,
+    } = option
+
+  //-
+  //- template
+  //-
+
+  p.cMarquee(
+    aria-label=text
+    data-el=!isManual
+  )&attributes(attributes)
+    span.cMarquee-line(data-ref)
+      span.cMarquee-text(data-ref)= text

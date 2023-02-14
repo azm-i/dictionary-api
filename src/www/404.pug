@@ -1,0 +1,21 @@
+extends /layouts/default
+
+include /pages/404/**/*.pug
+
+append variables
+  - const ID = 'p404'
+  - const TITLE = 'お探しのページは見つかりません'
+
+append meta
+  +noindex
+
+append style
+  //- +stylePage('/assets/css/404/index.css')
+
+append scripts
+  //- +scriptPage('/assets/js/404/index.js')
+
+append contents
+  h1 404
+
+append fixedLocal

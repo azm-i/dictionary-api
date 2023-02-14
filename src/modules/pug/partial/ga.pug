@@ -1,0 +1,14 @@
+-
+  const tag = `
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '${GA_ID}'${IS_GA_SEND_PAGE_VIEW_MANUAL ? `, {
+      send_page_view: false
+    }` : ''});
+  </script>`
+!= tag

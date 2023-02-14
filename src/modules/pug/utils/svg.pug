@@ -1,0 +1,39 @@
+mixin svg(option)
+  //-
+  //- data
+  //-
+
+  -
+    const {
+      name,
+      alt,
+      isSizeFont = false,
+      isSizeNatural = false,
+      fill = 'currentColor',
+    } = option
+
+    const { width, height } = svgSize(`/svg/${name}.svg`)
+    let style = isSizeFont
+      ? {
+        width: `${width / height}em`,
+        height: '1em',
+      }
+      : isSizeNatural
+      ? {
+        width: `${width}px`,
+        height: `${height}px`,
+      }
+      : null
+
+  //-
+  //- template
+  //-
+
+  svg(
+    role="img"
+    fill=fill
+    width=width
+    height=height
+    style=style
+  )&attributes(attributes, (alt ? {'aria-label': alt} : null))
+    use(xlink:href=getFullPath(`/assets/img/common/svg-symbols.svg${CACHE_VERSION}#svg-` + name.replace('@', '-')))

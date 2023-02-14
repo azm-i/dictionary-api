@@ -1,0 +1,87 @@
+$component: '.cMouseStalker';
+
+$size: 20px;
+$size-hover: 160px;
+
+#{$component} {
+  @include z-index(mouseStalker);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b7b3b1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.8s;
+  transition-property: color;
+  pointer-events: none;
+  width: size-variable-pc($size);
+  height: size-variable-pc($size);
+  @include media-sp {
+    display: none;
+  }
+
+  &-border {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    transition: 0.8s;
+    transition-property: background-color;
+    width: size-variable-pc($size);
+    height: size-variable-pc($size);
+  }
+
+  &-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $color-font;
+    white-space: nowrap;
+    opacity: 0;
+
+    svg {
+      display: block;
+      width: size-variable-pc(20);
+      height: size-variable-pc(20);
+    }
+  }
+
+  &.-white {
+    color: #fff;
+    #{$component}-icon {
+      color: currentColor;
+    }
+  }
+
+  &.-red {
+    color: $color-theme;
+    #{$component}-icon {
+      color: currentColor;
+    }
+  }
+
+  &.-back {
+    #{$component}-icon svg {
+      transform: scaleX(-1);
+    }
+  }
+
+  &.-magnet {
+    color: $color-theme;
+    #{$component}-border {
+      background-color: currentColor;
+    }
+    #{$component}-icon {
+      color: currentColor;
+    }
+  }
+}

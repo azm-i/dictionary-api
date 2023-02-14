@@ -1,0 +1,33 @@
+mixin cCircle(option = {})
+  -
+    const {
+      diameter,
+      strokeWidth = 2,
+      progress = 0,
+      color = 'currentColor',
+    } = option
+
+    const circumference = Math.ceil(diameter * 3.14)
+    const strokeDasharray = `${circumference}`
+    const strokeDashoffset = `${circumference * (1 - progress)}`
+
+  //-
+  //- template
+  //-
+
+  svg(
+    viewBox=`0 0 ${diameter + 2} ${diameter + 2}`
+    data-circle
+  )&attributes(attributes)
+    circle(
+      data-circle-path=circumference
+      cx=(diameter + 2) / 2
+      cy=(diameter + 2) / 2
+      r=diameter / 2
+      fill="transparent"
+      stroke=color
+      stroke-width=strokeWidth
+      stroke-dasharray=strokeDasharray
+      stroke-dashoffset=strokeDashoffset
+      transform=`rotate(-90 ${(diameter + 2) / 2} ${(diameter + 2) / 2})`
+    )

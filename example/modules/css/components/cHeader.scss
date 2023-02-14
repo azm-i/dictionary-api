@@ -1,0 +1,25 @@
+$component: '.cHeader';
+
+#{$component} {
+  @include z-index(header);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  border: 1px solid $color-theme;
+
+  &-logo {
+    pointer-events: auto;
+  }
+
+  &-menu {
+    pointer-events: auto;
+  }
+
+  &.-hide {
+    pointer-events: none;
+  }
+}

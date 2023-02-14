@@ -1,0 +1,7 @@
+/// @group outline
+@mixin outline {
+  outline: none;
+  [data-whatinput='keyboard'] &:focus {
+    outline: auto;
+  }
+}

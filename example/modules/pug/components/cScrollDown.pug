@@ -1,0 +1,20 @@
+mixin cScrollDown(option = {})
+  -
+    const {
+      isManual = false,
+      isWhite = false,
+    } = option
+
+  //-
+  //- template
+  //-
+
+  a.cScrollDown(
+    class=(isWhite && '-white')
+    data-c-scroll-down
+    data-scroll-down=!isManual
+    data-scroll-down-manual=isManual
+  )&attributes(attributes)
+    span.cScrollDown-icon
+      +svg({ name: 'arrow' }).cScrollDown-icon-image
+    span.cScrollDown-text Scroll Down

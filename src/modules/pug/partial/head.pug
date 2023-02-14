@@ -1,0 +1,104 @@
+//- ------------------------------------
+//- common head
+//- ------------------------------------
+
+//-================ GA ================-//
+if GA_ID
+  include ./ga.pug
+
+//-================ meta ================-//
+meta(charset='utf-8')
+if typeof DESCRIPTION !== 'undefined'
+  meta(name='description', content=DESCRIPTION)
+if typeof KEYWORDS !== 'undefined'
+  meta(name='keywords', content=KEYWORDS)
+
+//-================ title ================-//
+title!= TITLE && TITLE !== SITE_NAME ? `${TITLE} | ${SITE_NAME}` : SITE_NAME
+
+//-================ viewport ================-//
+meta(name='viewport' content='initial-scale=1.0, width=device-width')
+
+//- タブレットサイズのviewport書き換え
+//- script.
+//-   // https://github.com/dsktschy/viewport-extra/blob/master/LICENSE.txt
+//-   !function(t,i){"function"==typeof define&&define.amd?define([],i):"object"==typeof module&&module.exports?module.exports=i():t.ViewportExtra=i()}("undefined"!=typeof self?self:this,function(){"use strict";var t;return(t=function(t){if(this.minWidth=this.maxWidth=null,"number"==typeof t)this.minWidth=t;else{if("object"!=typeof t)throw new Error("ViewportExtra requires an argument that is number or object");if("number"==typeof t.minWidth&&(this.minWidth=t.minWidth),"number"==typeof t.maxWidth&&(this.maxWidth=t.maxWidth),"number"==typeof this.minWidth&&"number"==typeof this.maxWidth&&this.minWidth>this.maxWidth)throw new Error("ViewportExtra requires that maxWidth is not less than minWidth")}this.applyToElement()}).prototype.applyToElement=function(){if("undefined"!=typeof window){var i=t.createContent(this,window);i&&t.element.setAttribute("content",i)}},t.createContent=function(t,i){var e,n,r;return e=n="",r=[],null!=t.minWidth&&t.minWidth===t.maxWidth?(e="width="+t.minWidth,n="initial-scale="+i.innerWidth/t.minWidth):null!=t.minWidth&&i.innerWidth<t.minWidth?(e="width="+t.minWidth,n="initial-scale="+i.innerWidth/t.minWidth):null!=t.maxWidth&&i.innerWidth>t.maxWidth&&(e="width="+t.maxWidth,n="initial-scale="+i.innerWidth/t.maxWidth),[e,n].forEach(function(t){t&&r.push(t)}),r.join(",")},t.createElement=function(){var t=document.createElement("meta");return t.setAttribute("name","viewport"),t.setAttribute("content","width=device-width,initial-scale=1"),document.head.insertBefore(t,null),t},t.element="undefined"==typeof window?null:document.querySelector('[name="viewport"]')||t.createElement(),t});
+//-   ;(function(){var a=navigator.userAgent;var c=a.indexOf("iPhone")>-1||(a.indexOf("Android")>-1&&a.indexOf("Mobile")>-1);var b=!c&&(a.indexOf("iPad")>-1||(a.indexOf("Macintosh")>-1&&"ontouchend" in document)||a.indexOf("Android")>-1);if(b){new ViewportExtra(768)}})();
+//- //-
+
+//-================ OGP ================-//
+meta(property='og:title', content!=(TITLE && TITLE !== SITE_NAME ? `${TITLE} | ${SITE_NAME}` : OG_TITLE || TITLE))
+
+if typeof OG_SITE_NAME !== 'undefined' || typeof SITE_NAME !== 'undefined'
+  meta(property='og:site_name', content!=(OG_SITE_NAME || SITE_NAME))
+
+if typeof OG_DESCRIPTION !== 'undefined' || typeof DESCRIPTION !== 'undefined'
+  meta(property='og:description', content!=(OG_DESCRIPTION || DESCRIPTION))
+
+if typeof OG_TYPE !== 'undefined'
+  meta(property='og:type', content=OG_TYPE)
+
+- const canonical = typeof OG_URL !== 'undefined' ? OG_URL : PAGE_INFO !== 'undefined' && PAGE_INFO.absolute_path !== 'undefined' ? PAGE_INFO.absolute_path : null
+if canonical
+  meta(property='og:url', content!=canonical)
+  link(rel='canonical' href!=canonical)
+
+if typeof OG_IMAGE !== 'undefined' || typeof SITE_OG_IMAGE !== 'undefined'
+  meta(property='og:image', content!=(OG_IMAGE || SITE_OG_IMAGE))
+  meta(name="twitter:card" content="summary_large_image" )
+
+if typeof FB_ADMINS !== 'undefined'
+  meta(property='fb:admins', content=FB_ADMINS)
+
+//-================ theme color ================-//
+//- meta(name='theme-color' content='#000000')
+
+//-================ format ================-//
+//- meta(name='format-detection' content='telephone=no')
+
+//-================ additional meta ================-//
+//- .
+//-   <meta name="facebook-domain-verification" content="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
+block meta
+
+//-================ favicon ================-//
+link(rel='icon' href="/assets/img/common/favicon.png")
+link(rel='apple-touch-icon' sizes="72x72" href=(typeof APPLE_TOUCH_ICON !== 'undefined' ? APPLE_TOUCH_ICON : SITE_APPLE_TOUCH_ICON))
+
+//-================ font ================-//
+//- NOTE: Googleフォントを読み込むときは以下3行のコメントアウトを外す
+//- link(rel='preconnect' href='https://fonts.googleapis.com')
+//- link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+//- link(href='https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap' rel='stylesheet')
+
+//-================ style ================-//
++style('/assets/css/main.css')
+block style
+
+//-================ script ================-//
+
+//- polyfill
+if ENABLE_POLYFILL
+  script(nomodule src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js' crossorigin='anonymous')
+  if POLYFILLS && POLYFILLS.length > 0
+    script(nomodule src=`https://polyfill.io/v3/polyfill.min.js?features=${POLYFILLS.join('%2C')}` crossorigin='anonymous')
+
+//- source
++script('/assets/js/vendor.js')
+
+//- Paceのオプション
+//- script.
+//-   window.paceOptions = {
+//-     ajax: false,
+//-     document: false,
+//-     eventLag: false,
+//-     elements: false,
+//-   };
+
++script('/assets/js/main.js')
+
+block scripts
+
+//-================ GTM ================-//
+if GTM_ID
+  include ./gtm-head.pug

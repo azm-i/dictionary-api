@@ -1,0 +1,37 @@
+extends /layouts/default
+
+include /pages/index/**/*.pug
+
+append variables
+  - const ID = 'pIndex'
+  - const TITLE = SITE_NAME
+  - const DESCRIPTION = 'Description of the top page.'
+  - const OG_TYPE = 'website'
+  - const OG_URL = `${ROOT_PATH}/`
+  - const SLUG = 'top'
+
+append php
+  //- +wpSetPage(SLUG)
+
+append meta
+  +preloadImagePage('/assets/img/index/300x150.png.webp')
+
+append style
+  +stylePage('/assets/css/index.css')
+
+append scripts
+  +scriptPage('/assets/js/index.js')
+
+append contents
+  +lKv
+
+  +cTitle first title
+
+  div(style="margin: 100px")
+    +cButton(href=getFullPath("/about/")) about page
+  div(style="margin: 100px")
+    +cButtonBorder(href=getFullPath("/about/")) about page
+
+  +cTitle(style="margin-top: 150vh") second title
+
+append fixedLocal

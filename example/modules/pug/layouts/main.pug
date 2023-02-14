@@ -1,0 +1,75 @@
+extends ./base
+
+block body
+  if ENABLE_ASYNCHRONOUS_TRANSITION
+    //- 非同期遷移：有効
+    +cHeader()(data-permanent)
+
+    .cBase(data-transition-hidden)
+      .cScroll(data-scroll-container)
+        div(data-transition-contents)
+          div(data-router-wrapper)
+            div(data-router-view=ID)
+
+              main.cMain(class={ '-under': IS_LOWER })
+                block contents
+
+                include /../../../src/modules/pug/partial/callTarget.pug
+
+              block clipPath
+
+              div(data-fixed-local)
+                block fixedLocal
+
+              block templateLocal
+
+          div(data-permanent)
+            +cFooter
+
+      div(data-fixed-local-container)
+
+    div(data-permanent)
+      block fixed
+        +cMenu
+        .cBackground(data-el)
+        //- +cTransition
+        //- +cMouseStalker
+        +cOrientationAlert
+        //- +cLoading
+
+    block template
+
+    include /../../../src/modules/pug/partial/clipPath.pug
+
+  else
+    //- 非同期遷移：無効
+    +cHeader
+
+    .cScroll(data-scroll-container)
+      main.cMain(class={ '-under': IS_LOWER })
+        block contents
+
+        include /../../../src/modules/pug/partial/callTarget.pug
+
+      block clipPath
+
+      div(data-fixed-local)
+        block fixedLocal
+
+      block templateLocal
+
+      +cFooter
+
+    div(data-fixed-local-container)
+
+    block fixed
+      +cMenu
+      .cBackground(data-el)
+      //- +cTransition
+      //- +cMouseStalker
+      +cOrientationAlert
+      //- +cLoading
+
+    block template
+
+    include /../../../src/modules/pug/partial/clipPath.pug

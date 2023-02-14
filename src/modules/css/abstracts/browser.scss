@@ -1,0 +1,68 @@
+@mixin browser-ie {
+  .bIe & {
+    @content;
+  }
+}
+
+@mixin browser-firefox {
+  .bFirefox & {
+    @content;
+  }
+}
+
+@mixin browser-ie-firefox {
+  .bIe &,
+  .bFirefox & {
+    @content;
+  }
+}
+
+@mixin browser-windows-firefox {
+  .bWindows &,
+  .bFirefox & {
+    @content;
+  }
+}
+
+@mixin browser-tablet {
+  .bTablet & {
+    @content;
+  }
+}
+
+@mixin browser-ie-tablet {
+  .bIe &,
+  .bTablet & {
+    @content;
+  }
+}
+
+@mixin browser-mobile {
+  .bMobile & {
+    @content;
+  }
+}
+
+@mixin browser-android {
+  .bAndroid & {
+    @content;
+  }
+}
+
+@mixin browser-ios {
+  .bIos & {
+    @content;
+  }
+}
+
+@mixin browser-safari {
+  .bSafari & {
+    @content;
+  }
+}
+
+@mixin browser-windows {
+  .bWindows & {
+    @content;
+  }
+}

@@ -1,0 +1,26 @@
+extends /layouts/default
+
+include /pages/template/**/*.pug
+
+append variables
+  - const ID = 'pTemplate'
+  - const TITLE = ''
+  - const DESCRIPTION = ''
+  - const OG_TYPE = 'article'
+  //- - const SLUG = 'template'
+
+append php
+  //- +wpSetPage(SLUG)
+
+append meta
+
+append style
+  //- +stylePage('/assets/css/template/index.css')
+
+append scripts
+  //- +scriptPage('/assets/js/template/index.js')
+
+append contents
+  | template
+
+append fixedLocal

@@ -1,0 +1,161 @@
+mixin tagImg(isVariableSize)
+  img(
+    data-variable-img=isVariableSize
+  )&attributes(attributes)
+
+mixin img(option)
+  //-
+  //- data
+  //-
+
+  -
+    const {
+      dataSrc,
+      alt = '',
+      isRetina = false,
+      isDisableLazy = false,
+      isVariableSize = false,
+      isTbSp = false,
+      isDisable2xPc = false,
+      isDisable2xSp = false,
+      classNamePicture,
+    } = option
+    let {
+      src,
+      srcSp,
+      width,
+      height,
+      widthSp,
+      heightSp,
+      isWebp = ENABLE_WEBP,
+      isDisableAutoDetect = !!dataSrc,
+      isDisableSize = false,
+    } = option
+    isDisableAutoDetect = isDisableAutoDetect || (src && (src.startsWith('http') || src.startsWith('<?')))
+    isDisableSize = isDisableSize || (src && (src.startsWith('http') || src.startsWith('<?')))
+
+    const attributesSp = {}
+
+    src = src || dataSrc
+    const loading = !isDisableLazy ? 'lazy' : null
+
+    if (!isDisableSize) {
+      if (!(width || height)) {
+        const size = imageSize(src)
+        width = size.width
+        height = size.height
+      }
+      if (isRetina && !isVariableSize) {
+        width /= 2
+        height /= 2
+      }
+    }
+
+    const srcFull = getFullPath(src)
+    isWebp = isWebp && !isDisableAutoDetect && !srcFull.endsWith('.svg')
+
+    let src2x
+    let isSrc2x
+    let src2xFull
+    if (!isDisableAutoDetect && !isDisable2xPc) {
+      src2x = src.replace('/1x/', '/2x/').replace(/(\.(png|jpg|jpeg|gif))$/, '@2x$1')
+      isSrc2x = detectExistImage(src2x)
+      src2xFull = getFullPath(src2x)
+    }
+
+    attributes['data-src'] = getFullPath(dataSrc)
+    if (!dataSrc) {
+      attributes.src = srcFull
+    }
+    attributes.width = width
+    attributes.height = height
+    attributes.alt = alt
+    attributes.loading = loading
+
+    let srcset
+    let srcsetWebp
+    let isSrcSp
+    let srcSpFull
+    let srcsetSp
+    let srcsetWebpSp
+    let srcSp2x
+    let isSrcSp2x
+    let srcSp2xFull
+    if (!isDisableAutoDetect) {
+      srcset = isSrc2x
+        ? `${srcFull} 1x` + (isDisable2xPc ? '' : `,${src2xFull} 2x`)
+        : null
+      attributes.srcset = srcset
+
+      if (isWebp) {
+        srcsetWebp = isSrc2x
+          ? `${srcFull + '.webp'} 1x` + (isDisable2xPc ? '' : `,${src2xFull + '.webp'} 2x`)
+          : srcFull + '.webp'
+      }
+
+      srcSp = srcSp || src.includes('/pc/') && src.replace('/pc/', '/sp/')
+      isSrcSp = srcSp && detectExistImage(srcSp)
+
+      if (isSrcSp && !isDisable2xSp) {
+        srcSp2x = srcSp.replace('/1x/', '/2x/').replace(/(\.(png|jpg|jpeg|gif))$/, '@2x$1')
+        isSrcSp2x = detectExistImage(srcSp2x)
+        srcSp2xFull = getFullPath(srcSp2x)
+      }
+
+      srcSpFull = getFullPath(srcSp)
+      srcsetSp = isSrcSp2x ? `${srcSpFull} 1x,${srcSp2xFull} 2x` : srcSpFull
+      if (isWebp) {
+        srcsetWebpSp = isSrcSp2x ? `${srcSpFull + '.webp'} 1x,${srcSp2xFull + '.webp'} 2x` : srcSpFull + '.webp'
+      }
+    } else if (srcSp) {
+      isSrcSp = true
+      srcSpFull = isDisableAutoDetect ? srcSp : getFullPath(srcSp)
+      srcsetSp = srcSpFull
+    }
+
+    if (!isDisableSize) {
+      if (!(widthSp || heightSp) && srcSp && isSrcSp) {
+        const size = imageSize(srcSp)
+        widthSp = size.width
+        heightSp = size.height
+      }
+      if (!isVariableSize) {
+        widthSp /= 2
+        heightSp /= 2
+      }
+    }
+    if (widthSp && heightSp) {
+      attributesSp.width = widthSp
+      attributesSp.height = heightSp
+    }
+
+  //-
+  //- template
+  //-
+
+  if isSrcSp
+    picture(class=classNamePicture)
+      if isWebp
+        source(srcset=srcsetWebpSp type="image/webp" media='(max-width: 767px)')&attributes(attributesSp)
+        if isTbSp
+          source(srcset=srcsetWebpSp type="image/webp" media='(min-width: 768px) and (orientation: portrait)')&attributes(attributesSp)
+        source(srcset=srcsetWebp type="image/webp")
+      if isTbSp
+        source(srcset!=srcsetSp media='(min-width: 768px) and (orientation: portrait)')&attributes(attributesSp)
+      source(srcset!=srcsetSp media='(max-width: 767px)')&attributes(attributesSp)
+      +tagImg(isVariableSize)&attributes(attributes)
+  else
+    if attributes['data-src']
+      if isWebp
+        picture
+          source(data-srcset=srcsetWebp type="image/webp")
+          +tagImg(isVariableSize)&attributes(attributes)
+      else
+        +tagImg(isVariableSize)&attributes(attributes)
+    else
+      if isWebp
+        picture
+          source(srcset=srcsetWebp type="image/webp")
+          +tagImg(isVariableSize)&attributes(attributes)
+      else
+        +tagImg(isVariableSize)&attributes(attributes)

@@ -1,0 +1,27 @@
+mixin cButtonBorder(option = {})
+  -
+    const {
+      width = 121,
+      height = 91,
+      isNotLink,
+      //- isVertical,
+    } = option
+
+  //-
+  //- template
+  //-
+
+  #{isNotLink ? 'div' : 'a'}.cButtonBorder(
+    data-button=!isNotLink
+    data-scroll
+    data-scroll-repeat
+    data-scroll-call="button"
+  )&attributes(attributes)
+    span.cButtonBorder-inner
+      span.cButtonBorder-text(data-button-sticky-inner)
+        block
+      span.cButtonBorder-mark(data-button-border-wrapper)
+        span.cButtonBorder-sticky(data-button-sticky)
+          svg(xmlns='http://www.w3.org/2000/svg' width=height height=width viewBox=`0 0 ${height} ${width}` data-button-svg).cButtonBorder-border
+            ellipse(cx=(height / 2) cy=(width / 2) rx=Math.floor((height / 2) - 2 ) ry=Math.floor((width / 2) - 1))
+            ellipse(cx=(height / 2) cy=(width / 2) rx=Math.floor((height / 2) - 2 ) ry=Math.floor((width / 2) - 1) data-button-border)

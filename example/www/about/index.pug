@@ -1,0 +1,19 @@
+extends /layouts/default
+
+block variables
+  - const ID = 'pAbout'
+  - const TITLE = 'About Page'
+  - const DESCRIPTION = 'Description of the about page.'
+  - const OG_TYPE = 'article'
+
+block style
+  +stylePage('/assets/css/about.css')
+
+block scripts
+  //- +scriptPage('/assets/js/about.js')
+
+block contents
+  div(style="padding-top: 100px") about page
+  +cButton(href=getFullPath("/")) index page
+
+append fixedLocal

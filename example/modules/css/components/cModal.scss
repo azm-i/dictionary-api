@@ -1,0 +1,54 @@
+$component: '.cModal';
+
+#{$component} {
+  @include z-index(modal);
+  display: none;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &-content {
+    position: relative;
+    z-index: 1;
+    overflow-y: scroll;
+    background-color: #f8f9f9;
+  }
+
+  &-close {
+    position: absolute;
+    z-index: 2;
+    @include media-pc {
+      top: size-variable-pc(30);
+      right: size-variable-pc(40);
+    }
+    @include media-sp {
+      top: size-variable-sp(30);
+      right: size-variable-sp(40);
+    }
+  }
+
+  &-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(#000, 0.5);
+    cursor: pointer;
+  }
+
+  &.-open {
+    display: flex;
+    pointer-events: auto;
+  }
+}
+
+body.-open {
+  pointer-events: none;
+}

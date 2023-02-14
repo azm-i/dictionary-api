@@ -1,0 +1,16 @@
+-
+  const wpDirectory = 'cms'
+  const wpRequire = `require_once($_SERVER['DOCUMENT_ROOT'] . '/${wpDirectory}/wp-load.php');`
+
+  function wpSetPage(slug) {
+    return `
+  <?php
+  ${wpRequire}
+  $slug = '${slug}';
+  set_page_by_slug($slug);
+  ?>
+  `
+  }
+
+mixin wpSetPage(slug)
+  != wpSetPage(slug)

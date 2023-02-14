@@ -1,0 +1,29 @@
+$component: '.cMarquee';
+
+#{$component} {
+  @include font-en;
+  @include tracking(55);
+  overflow: hidden;
+  line-height: 1;
+  white-space: nowrap;
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+  @include media-pc {
+    @include font-size-variable-pc(20);
+    margin: 0 $margin-content-pc;
+  }
+  @include media-sp {
+    @include font-size-variable-sp(32);
+    margin: 0 $margin-content-sp;
+  }
+
+  &-line {
+    display: flex;
+    animation: marquee 12s linear infinite;
+  }
+
+  &.-pause {
+    #{$component}-line {
+      animation-play-state: paused;
+    }
+  }
+}

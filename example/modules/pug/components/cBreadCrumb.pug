@@ -1,0 +1,11 @@
+mixin cBreadCrumb()
+
+  //-
+  //- template
+  //-
+
+  .cBreadCrumb
+    ul.cBreadCrumb-list
+      each link in BREADCRUMB
+        li.cBreadCrumb-listItem
+          a.cBreadCrumb-listLink(href=getFullPath(link.url))!= link.pageName

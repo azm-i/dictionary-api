@@ -1,0 +1,16 @@
+a,
+label,
+select,
+button,
+input[type='radio'],
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
+button {
+  @include outline;
+}
+
+// ::selection {
+//   background: #d9d9d9;
+// }

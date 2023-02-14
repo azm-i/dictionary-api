@@ -1,0 +1,66 @@
+html {
+  overflow-y: scroll;
+  // -webkit-font-smoothing: antialiased;
+  // visibility: hidden; // Adobe Fonts対策
+
+  @include media-pc {
+    font-size: size-viewport-pc($font-size-browser);
+  }
+
+  @include media-tb {
+    /* media-tb */
+  }
+
+  @include media-tb-portrait {
+    /* media-tb-portrait */
+  }
+
+  // 1080px以下では可変サイズではなく固定にする
+  // @media screen and (min-width: #{$breakpoint}) and (max-width: #{$breakpoint-tb-pc}) {
+  //   font-size: $font-size-browser * math.div($base-width-min, $base-width-pc);
+  // }
+
+  // 1920px以上では可変サイズではなく固定にする
+  // @include media-pc-max {
+  //   font-size: $font-size-browser * math.div($base-width-max, $base-width-pc);
+  // }
+
+  @include media-sp {
+    font-size: size-viewport-sp($font-size-browser-sp);
+    min-height: 100vh;
+  }
+
+  &.bMobile {
+    overflow-y: visible;
+  }
+
+  &.sWait {
+    cursor: wait;
+  }
+
+  &.-full {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  // &.wf-active {
+  //   visibility: visible; // Adobe Fonts対策
+  // }
+}
+
+body {
+  color: $color-font;
+  font-family: $font-family-gothic;
+  font-feature-settings: 'palt';
+  @include media-pc {
+    @include font-size-variable-pc($font-size-base-px);
+    // min-width: $base-width-min;
+  }
+  @include media-sp {
+    @include font-size-variable-sp($font-size-base-px-sp);
+  }
+
+  html.-full & {
+    height: 100%;
+  }
+}

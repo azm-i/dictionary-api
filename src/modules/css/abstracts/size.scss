@@ -1,0 +1,249 @@
+@import 'sass';
+@import 'font';
+
+//
+// base （デザインデータのサイズ）
+//
+
+/// @group size
+$base-width-tb: 768px;
+/// @group size
+$base-width-pc: 1600px;
+/// @group size
+$base-height: 900px;
+/// @group size
+$base-width-min: $base-width-tb;
+/// @group size
+$base-width-max: 1920px;
+/// @group size
+$base-height-min: 600px;
+/// @group size
+$base-width-sp: 828px;
+// $base-width-sp: 750px;
+/// @group size
+$base-height-sp: 1430px;
+/// @group size
+$base-width-min-sp: 640px;
+/// @group size
+$base-height-modal-sp: 1208px;
+/// @group size
+$base-width-sp-land: 1334px;
+/// @group size
+$base-height-sp-land: 828px;
+// $base-height-sp-land: 750px;
+
+//
+// size
+//
+
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function pc-window-w-ratio($val) {
+  @return math.div(remove-unit($val), remove-unit($base-width-pc)) * 100vw;
+}
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function pc-window-h-ratio($val) {
+  @return math.div(remove-unit($val), remove-unit($base-height)) * 100vh;
+}
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function pc-window-w-ratio-min($val) {
+  @return math.div(remove-unit($val), remove-unit($base-width-min)) * 100vw;
+}
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function pc-window-h-ratio-min($val) {
+  @return math.div(remove-unit($val), remove-unit($base-height-min)) * 100vh;
+}
+
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function sp-px($val) {
+  @return math.div(remove-unit($val), 2) * 1px;
+}
+
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function sp-window-w-ratio($val) {
+  @return math.div(remove-unit($val), remove-unit($base-width-sp)) * 100vw;
+}
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function sp-window-h-ratio($val) {
+  @return math.div(remove-unit($val), remove-unit($base-height-sp)) * 100vh;
+}
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function sp-window-h-ratio-modal($val) {
+  @return math.div(remove-unit($val), remove-unit($base-height-modal-sp)) *
+    100vh;
+}
+
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function sp-land-window-w-ratio($val) {
+  @return math.div(remove-unit($val), remove-unit($base-width-sp-land)) * 100vw;
+}
+/// @param {Number(any)} $number - 指定サイズ
+/// @group size
+@function sp-land-window-h-ratio($val) {
+  @return math.div(remove-unit($val), remove-unit($base-height-sp-land)) * 100vw;
+}
+
+/// @group size
+@function size-variable-pc-small($size) {
+  @return math.div(remove-unit($size), remove-unit($base-width-min)) * 100vw;
+}
+
+/// htmlタグのフォントサイズを基準とした相対的なサイズ
+/// （html タグのフォントサイズがウィンドウ幅に応じて可変の場合のみ、この値も可変となる）
+///
+/// @param {Number(px)} $size - デザイン上のpx値サイズ
+/// @return {Number(rem)} - htmlタグのフォントサイズを基準とした相対的なサイズ
+/// @group size
+@function size-variable-pc($size) {
+  @return math.div(remove-unit($size), remove-unit($font-size-browser)) * 1rem;
+}
+
+/// ウィンドウ幅に応じた可変サイズ (PC)
+///
+/// @param {Number(px)} $size - デザイン上のpx値サイズ
+/// @return {Number(rem)} - ウィンドウ幅に応じた可変サイズ
+/// @group size
+@function size-viewport-pc($size) {
+  @return math.div(remove-unit($size), remove-unit($base-width-pc)) * 100vw;
+}
+
+/// htmlタグのフォントサイズを基準とした相対的なサイズ (SP)
+/// （html タグのフォントサイズがウィンドウ幅に応じて可変の場合のみ、この値も可変となる）
+///
+/// @param {Number(px)} $size - デザイン上のpx値サイズ
+/// @return {Number(rem)} - htmlタグのフォントサイズを基準とした相対的なサイズ
+/// @group size
+@function size-variable-sp($size) {
+  @return math.div(remove-unit($size), remove-unit($font-size-browser-sp)) *
+    1rem;
+}
+
+/// ウィンドウ幅に応じた可変サイズ (SP)
+///
+/// @param {Number(px)} $size - デザイン上のpx値サイズ
+/// @return {Number(rem)} - ウィンドウ幅に応じた可変サイズ
+/// @group size
+@function size-viewport-sp($size) {
+  @return math.div(remove-unit($size), remove-unit($base-width-sp)) * 100vw;
+}
+
+@function size-variable-tb($size) {
+  @return math.div(remove-unit($size), remove-unit($base-width-tb)) * 100vw;
+}
+
+/// @group size
+$ui-height-sp: size-variable-sp(129);
+
+//
+// content
+//
+
+/// @group size
+$width-content-pc: 1200px;
+/// @group size
+$width-content-single-pc: 1000px;
+/// @group size
+$margin-content-pc: size-variable-pc(80);
+/// @group size
+$margin-content-inner-pc: size-variable-pc(180);
+/// @group size
+$margin-negative-content-pc: calc((100vw - #{$width-content-pc}) / 2 * -1);
+/// @group size
+$margin-negative-content-single-pc: calc(
+  (100vw - #{$width-content-single-pc}) / 2 * -1
+);
+/// @group size
+$margin-content-small: 80px;
+/// @group size
+$margin-content-sp: size-variable-sp(50);
+/// @group size
+$margin-negative-content-sp: -$margin-content-sp;
+/// @group size
+$margin-single-wide-pc: math.div(
+  ($width-content-pc - $width-content-single-pc),
+  2
+);
+/// @group size
+$margin-negative-single-wide-pc: -$margin-single-wide-pc;
+
+/// @group size
+$base-width-small: $width-content-pc + $margin-content-small * 2;
+
+//
+// components
+//
+
+/// @group size
+$height-header: 70px;
+/// @group size
+$height-header-sp: size-variable-sp(150);
+
+/// @group size
+$height-button: 80px;
+/// @group size
+$height-button-sp: size-variable-sp(120);
+
+/// @group size
+@mixin margin-content-pc {
+  margin: 0 $margin-content-pc;
+}
+
+/// @group size
+@mixin margin-content-sp {
+  margin: 0 $margin-content-sp;
+}
+
+/// @group size
+@mixin margin-content {
+  @include media-pc {
+    @include margin-content-pc;
+  }
+  @include media-sp {
+    @include margin-content-sp;
+  }
+}
+
+/// @group size
+@mixin full-width-pc {
+  margin: 0 (-$margin-content-pc);
+}
+
+/// @group size
+@mixin full-width-sp {
+  margin: 0 (-$margin-content-sp);
+}
+
+/// @group size
+@mixin full-width {
+  @include media-pc {
+    @include full-width-pc;
+  }
+  @include media-sp {
+    @include full-width-sp;
+  }
+}
+
+/// @group size
+@mixin margin-inner-pc {
+  margin: 0 $margin-content-inner-pc;
+}
+
+/// @group size
+@mixin margin-inner {
+  @include media-pc {
+    @include margin-inner-pc;
+  }
+}
+
+/// @group size
+@mixin max-width {
+  max-width: $base-width-max;
+}

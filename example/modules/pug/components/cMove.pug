@@ -1,0 +1,40 @@
+mixin cMove(option = {})
+  //-
+  //- data
+  //-
+  -
+    const {
+      speed,
+      target,
+      offset,
+      isStop,
+      isStopSp,
+      isManual = false,
+      classNameInner,
+    } = option
+
+  //-
+  //- template
+  //-
+  .cMove(
+    data-move
+    data-move-speed=speed
+    data-move-stop=isStop
+    data-move-stop-sp=isStopSp
+    data-move-manual=isManual
+    aria-hidden="true"
+  )&attributes(attributes)
+    div(data-move-wrapper)
+      .cMove-text(
+        data-move-inner
+        data-scroll
+        data-scroll-direction="horizontal"
+        data-scroll-speed="3"
+        data-scroll-repeat
+        data-scroll-offset=offset
+        data-scroll-call="move"
+        data-scroll-target=target
+        class=classNameInner
+      )
+        .cMove-single(data-move-single)
+          block

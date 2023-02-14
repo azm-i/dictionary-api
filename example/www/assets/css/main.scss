@@ -1,0 +1,23 @@
+@import '~/abstracts/**/*.scss';
+@import '~~/abstracts/**/*.scss';
+
+@import '~~/foundation/reset.scss';
+@import '~~/foundation/add.scss';
+@import '~/foundation/keyframes.scss';
+@import '~/foundation/base.scss';
+@import '~~/foundation/helper.scss';
+
+@import '~~/vendors/locomotive-scroll.scss';
+@import '~~/vendors/pace.scss';
+// @import '~~/vendors/swiper.scss';
+// @import '~~/vendors/dat-gui.scss';
+
+@import '~/components/*.scss';
+
+//
+// styles
+//
+.cBase {
+  @include z-index(base);
+  position: relative;
+}

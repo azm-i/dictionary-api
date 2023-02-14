@@ -1,0 +1,24 @@
+include /functions/**/*.pug
+include /config.pug
+
+block variables
+
+include /utils/**/*.pug
+include /components/**/*.pug
+
+if IS_PHP
+  block php
+
+doctype html
+html(lang=LANG class={ '-full': IS_FULL })
+  head
+    include /partial/head.pug
+
+  body(id=ID)
+    if GTM_ID
+      include /partial/gtm-body.pug
+
+    block body
+    block scriptsBody
+
+    //- include /partial/webFont/typekit.pug

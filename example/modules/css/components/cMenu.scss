@@ -1,0 +1,10 @@
+$component: '.cMenu';
+
+#{$component} {
+  @include z-index(menu);
+
+  &-inner {
+    width: 80%;
+    height: 80%;
+  }
+}

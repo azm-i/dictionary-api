@@ -1,0 +1,14 @@
+$component: '.lKv';
+
+#{$component} {
+  padding-top: 100px;
+  background-image: url(getFullPath('/assets/img/index/600x400.png'));
+  @include browser-ie {
+    background: blue;
+  }
+
+  &-image {
+    width: 50%;
+    height: auto;
+  }
+}

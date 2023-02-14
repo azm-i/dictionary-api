@@ -1,0 +1,6 @@
+/// ドラッグ防止
+/// @group drag
+@mixin disable-drag {
+  user-select: none;
+  -webkit-user-drag: none;
+}

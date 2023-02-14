@@ -1,0 +1,8 @@
+mixin cHeader(option = {})
+  header.cHeader(data-el)&attributes(attributes)
+    a.cHeader-link(href=getFullPath("/") data-anchor-offset)
+      #{ID === 'pIndex' ? 'h1' : 'p'}.cHeader-logo
+        | header
+
+    //- a.cHeader-menu(data-modal-trigger="menu")
+    //-   p MENU

@@ -1,0 +1,17 @@
+mixin cTitle(option = {})
+  -
+    const {
+      offset,
+    } = option
+
+  //-
+  //- template
+  //-
+
+  .cTitle(
+    data-title
+    data-scroll
+    data-scroll-offset=offset
+    data-scroll-call="cTitle"
+  )&attributes(attributes)
+    block

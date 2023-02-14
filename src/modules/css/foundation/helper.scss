@@ -1,0 +1,11 @@
+._pc {
+  @include media-sp {
+    display: none !important;
+  }
+}
+
+._sp {
+  @include media-pc {
+    display: none !important;
+  }
+}

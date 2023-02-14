@@ -1,0 +1,17 @@
+@mixin state-wait {
+  .sWait & {
+    @content;
+  }
+}
+
+@mixin state-disable-smooth-scroll {
+  .sDisableSmoothScroll & {
+    @content;
+  }
+}
+
+@mixin state-transition {
+  .sTransition & {
+    @content;
+  }
+}

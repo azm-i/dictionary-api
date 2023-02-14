@@ -1,0 +1,27 @@
+mixin cClipPathSvg(option = {})
+  -
+    const {
+      id,
+      width,
+      height,
+    } = option
+
+  //-
+  //- template
+  //-
+
+  svg(
+    xmlns='http://www.w3.org/2000/svg'
+    xmlns:xlink='http://www.w3.org/1999/xlink'
+    width='0'
+    height='0'
+    viewBox=`0 0 ${width} ${height}`
+    style="position:absolute"
+  )&attributes(attributes)
+    defs
+      clipPath(
+        id=id
+        clipPathUnits='objectBoundingBox'
+        transform=`scale(${1 / width} ${1 / height})`
+      )
+        block

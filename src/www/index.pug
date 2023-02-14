@@ -1,0 +1,28 @@
+extends /layouts/default
+
+include /pages/index/**/*.pug
+
+append variables
+  - const ID = 'pIndex'
+  - const TITLE = SITE_NAME
+  - const DESCRIPTION = ''
+  - const OG_TYPE = 'website'
+  - const OG_URL = `${ROOT_PATH}/`
+  - const SLUG = 'top'
+
+append php
+  //- +wpSetPage(SLUG)
+
+append meta
+  //- +preloadImagePage('/assets/img/index/pc/1x/b-img.png')
+
+append style
+  +stylePage('/assets/css/index.css')
+
+append scripts
+  +scriptPage('/assets/js/index.js')
+
+append contents
+  | top page
+
+append fixedLocal

@@ -1,0 +1,36 @@
+mixin style(path)
+  link(rel="stylesheet" href=getFullPath(path + CACHE_VERSION))&attributes(attributes)
+
+mixin script(path)
+  script(src=getFullPath(path + CACHE_VERSION) defer)&attributes(attributes)
+
+mixin stylePage(path)
+  +style(path)(data-reload)&attributes(attributes)
+
+mixin scriptPage(path)
+  +script(path)(data-reload)&attributes(attributes)
+
+mixin jsonLd
+  script(type="application/ld+json")&attributes(attributes)
+    block
+
+mixin noindex
+  meta(name="robots" content="noindex,follow")
+
+mixin preloadImage(src)
+  link(rel='preload' href=getFullPath(src) as='image')&attributes(attributes)
+
+mixin preloadImagePc(src)
+  +preloadImage(src)(media='(min-width: 768px)' data-preload-pc)&attributes(attributes)
+
+mixin preloadImageSp(src)
+  +preloadImage(src)(media='(max-width: 767px)' data-preload-sp)&attributes(attributes)
+
+mixin preloadImagePage(src)
+  +preloadImage(src)(data-reload)&attributes(attributes)
+
+mixin preloadImagePagePc(src)
+  +preloadImagePc(src)(data-reload)&attributes(attributes)
+
+mixin preloadImagePageSp(src)
+  +preloadImageSp(src)(data-reload)&attributes(attributes)

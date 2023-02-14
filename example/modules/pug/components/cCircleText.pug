@@ -1,0 +1,29 @@
+mixin cCircleText(option)
+  //-
+  //- data
+  //-
+
+  -
+    const {
+      text,
+      alt = text,
+      size = 86,
+    } = option
+    const sizeHalf = size / 2
+    const d = `
+      M 50, 50
+      m -${sizeHalf}, 0
+      a ${sizeHalf},${sizeHalf} 0 1,1 ${size},0
+      a ${sizeHalf},${sizeHalf} 0 1,1 -${size},0
+    `
+    const id = `cCircleTextPath${getUniqueId()}`
+
+  //-
+  //- template
+  //-
+
+  svg.cCircleText(viewBox='0 0 100 100')&attributes(attributes, { 'aria-label': alt })
+    defs
+      path(d=d id=id)
+    text
+      textPath(href=`#${id}`)!= text

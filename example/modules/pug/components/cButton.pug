@@ -1,0 +1,28 @@
+mixin cButton(option = {})
+  -
+    const {
+      isVertical,
+      isButton = false,
+      href,
+    } = option
+
+    if (attributes.href || href) {
+      attributes.href = attributes.href || href
+    } else {
+    }
+
+  //-
+  //- template
+  //-
+
+  #{isButton ? 'button' : 'a' }.cButton(
+    class=([{ '-vertical': isVertical }])
+    data-button
+    data-scroll
+    data-scroll-repeat
+    data-scroll-call="button"
+  )&attributes(attributes)
+    span.cButton-inner
+      span.cButton-text(data-button-sticky-inner)
+        block
+      span.cButton-background(data-button-sticky)
