@@ -11,9 +11,15 @@ export default class LForm extends Component {
     this.contents = this.el.querySelector("[data-form-contents]");
     this.button = this.el.querySelector("[data-form-search-button]");
     this.word = this.el.querySelector("[data-form-search-textbox]");
-    const postFetch = async () => {
-      let url =
-        "https://api.dictionaryapi.dev/api/v2/entries/en/" + this.word.value;
+    let url;
+    this.links = [...this.el.querySelectorAll("[data-form-word-link]")];
+    this.links.forEach((item) => {
+      item.addEventListener("click", () => {
+        url =
+          "https://api.dictionaryapi.dev/api/v2/entries/en/" + item.innerHTML;
+      });
+    });
+    const postFetch = async (url) => {
       let response = await fetch(url);
 
       if (response.ok) {
@@ -111,6 +117,10 @@ export default class LForm extends Component {
                     part_item_synonyms_word.className =
                       "lForm-part-item-synonyms-word";
                     part_item_synonyms_word.textContent = item;
+                    part_item_synonyms_word.setAttribute(
+                      "data-form-word-link",
+                      ""
+                    );
                   });
                 }
                 if (item.antonyms.length > 0) {
@@ -136,6 +146,10 @@ export default class LForm extends Component {
                     part_item_antonyms_word.className =
                       "lForm-part-item-antonyms-word";
                     part_item_antonyms_word.textContent = item;
+                    part_item_antonyms_word.setAttribute(
+                      "data-form-word-link",
+                      ""
+                    );
                   });
                 }
               });
@@ -155,6 +169,7 @@ export default class LForm extends Component {
                   part_synonyms_words.appendChild(part_synonyms_word);
                   part_synonyms_word.className = "lForm-part-synonyms-link";
                   part_synonyms_word.textContent = item;
+                  part_synonyms_word.setAttribute("data-form-word-link", "");
                 });
               }
               if (item.antonyms.length > 0) {
@@ -173,6 +188,7 @@ export default class LForm extends Component {
                   part_antonyms_words.appendChild(part_antonyms_word);
                   part_antonyms_word.className = "lForm-part-antonyms-link";
                   part_antonyms_word.textContent = item;
+                  part_antonyms_word.setAttribute("data-form-word-link", "");
                 });
               }
             });
@@ -207,15 +223,31 @@ export default class LForm extends Component {
             `document.getElementById('audio${i}').play()`
           );
         });
+        this.links = [...this.el.querySelectorAll("[data-form-word-link]")];
+        this.links.forEach((item) => {
+          item.addEventListener("click", () => {
+            url =
+              "https://api.dictionaryapi.dev/api/v2/entries/en/" +
+              item.innerHTML;
+            postFetch(url);
+            this.word.value = item.innerHTML;
+          });
+        });
       } else {
         alert("HTTP-Error: " + response.status);
       }
     };
-    this.button.addEventListener("click", postFetch, false);
+    this.button.addEventListener("click", () => {
+      url =
+        "https://api.dictionaryapi.dev/api/v2/entries/en/" + this.word.value;
+      postFetch(url);
+    });
     this.word.onkeypress = (e) => {
       const key = e.keyCode || e.charCode || 0;
       if (key == 13) {
-        postFetch();
+        url =
+          "https://api.dictionaryapi.dev/api/v2/entries/en/" + this.word.value;
+        postFetch(url);
       }
     };
   }
