@@ -43,15 +43,13 @@ $component: ".cHeader";
           size-variable-pc(20);
         @include font-size-variable-pc(18);
         @include font-en-bold();
+        border-radius: size-variable-pc(5);
       }
-      .-sans-serif {
-        font-family: sans-serif;
+      &:focus {
+        outline: 1px solid #a445ed;
       }
-      .-serif {
-        font-family: serif;
-      }
-      .-mono {
-        font-family: monospace;
+      &-option {
+        background-color: white;
       }
     }
     &-arrow {
@@ -80,7 +78,7 @@ $component: ".cHeader";
     &-button {
       @include media-pc {
         width: size-variable-pc(50);
-        height: size-variable-pc(25);
+        height: size-variable-pc(26);
       }
     }
     &-input {

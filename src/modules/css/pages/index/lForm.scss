@@ -80,7 +80,7 @@ $component: ".lForm";
   }
   &-button {
     position: relative;
-    background-color: rgba(#a445ed, 0.2);
+    background-color: rgba(#a445ed, 0.25);
     border-radius: 50%;
     transition: background-color 0.2s ease-out;
     @include media-pc {
@@ -101,14 +101,6 @@ $component: ".lForm";
         width: size-variable-pc(21);
         height: size-variable-pc(21);
         margin-left: size-variable-pc(3);
-      }
-    }
-    .-dark & {
-      background-color: #a445ed;
-      transition: background-color 0.2s ease-out;
-      &::after {
-        background-color: white;
-        transition: background-color 0.2s ease-out;
       }
     }
   }
