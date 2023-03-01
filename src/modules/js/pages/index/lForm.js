@@ -177,7 +177,7 @@ export default class LForm extends Component {
               }
             });
           }
-          if(item.sourceUrls) {
+          if (item.sourceUrls) {
             const source = document.createElement("div");
             result.appendChild(source);
             source.className = "lForm-source";
@@ -185,10 +185,15 @@ export default class LForm extends Component {
             source.appendChild(source_lead);
             source_lead.className = "lForm-source-lead";
             source_lead.textContent = "Source";
-            const source_link = document.createElement("a");
-            source.appendChild(source_link);
-            source_link.className = "lForm-source-link";
-            source_link.textContent = item.sourceUrls;
+            const source_links = document.createElement("div");
+            source.appendChild(source_links);
+            source_links.className = "lForm-source-links";
+            item.sourceUrls.forEach((item) => {
+              const source_link = document.createElement("a");
+              source_links.appendChild(source_link);
+              source_link.className = "lForm-source-link";
+              source_link.textContent = item;
+            });
           }
         });
         const audios = [...document.querySelectorAll(".lForm-play")];
@@ -207,5 +212,11 @@ export default class LForm extends Component {
       }
     };
     this.button.addEventListener("click", postFetch, false);
+    this.word.onkeypress = (e) => {
+      const key = e.keyCode || e.charCode || 0;
+      if (key == 13) {
+        postFetch();
+      }
+    };
   }
 }

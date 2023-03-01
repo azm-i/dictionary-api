@@ -194,7 +194,8 @@ mixin lForm(option = {})
   .lForm(data-form)
     .lForm-search(data-form-search)
       form.lForm-search-wrapper(data-form-search-wrapper)
-        input(data-form-search-textbox type="search" name="search-word" placeholder="Search for any word...").lForm-search-textbox
+        input(data-form-search-textbox type="search" placeholder="Search for any word...").lForm-search-textbox
+        input(type="textbox").lForm-search-textbox.-dummy
         .lForm-search-button(data-form-search-button)
           input(type="button")
           +svg({name: 'iconoir_search'}).lForm-search-icon

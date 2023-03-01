@@ -32,6 +32,12 @@ $component: ".lForm";
       &:focus {
         outline: 1px solid #a445ed;
       }
+      &.-dummy {
+        display: none;
+      }
+      &::-webkit-search-cancel-button{
+        -webkit-appearance: none;
+       }
     }
     &-button {
       position: absolute;
@@ -159,7 +165,6 @@ $component: ".lForm";
       @include media-pc {
         margin-top: size-variable-pc(26);
         margin-left: size-variable-pc(48);
-        padding-bottom: size-variable-pc(67);
       }
     }
     &-item {
@@ -234,6 +239,41 @@ $component: ".lForm";
     &-synonyms {
       display: flex;
       line-height: 1.3;
+      @include media-pc {
+        margin-top: size-variable-pc(30);
+      }
+      &-lead {
+        color: #757575;
+        align-self: flex-start;
+        @include media-pc {
+          @include font-size-variable-pc(20);
+        }
+      }
+      &-words {
+        color: #a445ed;
+        display: flex;
+        flex-wrap: wrap;
+        @include media-pc {
+          margin-left: size-variable-pc(22);
+          @include font-size-variable-pc(20);
+          @include tracking(10);
+        }
+      }
+      &-link {
+        border-bottom: 1px solid #a445ed;
+        &:not(:last-of-type) {
+          @include media-pc {
+            margin-right: size-variable-pc(15);
+          }
+        }
+      }
+    }
+    &-antonyms {
+      display: flex;
+      line-height: 1.3;
+      @include media-pc {
+        margin-top: size-variable-pc(30);
+      }
       &-lead {
         color: #757575;
         align-self: flex-start;
@@ -264,14 +304,22 @@ $component: ".lForm";
   &-source {
     display: flex;
     color: #757575;
+    line-height: 1.5;
+    border-top: 1px solid #e9e9e9;
     @include media-pc {
       @include font-size-variable-pc(20);
       @include tracking(10);
+      margin-top: size-variable-pc(50);
+      padding-top: size-variable-pc(30);
     }
     &-lead {
       @include media-pc {
         margin-right: size-variable-pc(22);
       }
+    }
+    &-links {
+      display: flex;
+      flex-wrap: wrap;
     }
     &-link {
       color: #1f1f1f;
