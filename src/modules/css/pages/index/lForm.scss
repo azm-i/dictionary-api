@@ -35,9 +35,9 @@ $component: ".lForm";
       &.-dummy {
         display: none;
       }
-      &::-webkit-search-cancel-button{
+      &::-webkit-search-cancel-button {
         -webkit-appearance: none;
-       }
+      }
     }
     &-button {
       position: absolute;
