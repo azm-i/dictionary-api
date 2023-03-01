@@ -318,4 +318,27 @@ $component: ".lForm";
       border-bottom: 1px solid #1f1f1f;
     }
   }
+  &-notfound {
+    text-align: center;
+    &-emoji {
+      @include media-pc {
+        @include font-size-variable-pc(70);
+      }
+    }
+    &-lead {
+      @include font-en-bold();
+      @include media-pc {
+        margin-top: size-variable-pc(40);
+        @include font-size-variable-pc(22);
+      }
+    }
+    &-text {
+      color: #757575;
+      @include media-pc {
+        margin-top: size-variable-pc(30);
+        @include font-size-variable-pc(18);
+        line-height: 1.3;
+      }
+    }
+  }
 }

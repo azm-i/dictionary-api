@@ -234,7 +234,28 @@ export default class LForm extends Component {
           });
         });
       } else {
-        alert("HTTP-Error: " + response.status);
+        while (this.contents.firstChild) {
+          this.contents.removeChild(this.contents.firstChild);
+        }
+        const result = document.createElement("div");
+        this.contents.appendChild(result);
+        result.className = "lForm-result";
+        const notfound = document.createElement("div");
+        result.appendChild(notfound);
+        notfound.className = "lForm-notfound";
+        const notfound_emoji = document.createElement("div");
+        notfound.appendChild(notfound_emoji);
+        notfound_emoji.className = "lForm-notfound-emoji";
+        notfound_emoji.textContent = "😕";
+        const notfound_lead = document.createElement("h2");
+        notfound.appendChild(notfound_lead);
+        notfound_lead.className = "lForm-notfound-lead";
+        notfound_lead.textContent = "No Definitions Found";
+        const notfound_text = document.createElement("p");
+        notfound.appendChild(notfound_text);
+        notfound_text.className = "lForm-notfound-text";
+        notfound_text.textContent =
+          "Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.";
       }
     };
     this.button.addEventListener("click", () => {
