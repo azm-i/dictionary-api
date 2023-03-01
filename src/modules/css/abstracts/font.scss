@@ -124,35 +124,89 @@ $font-weight-bold: 600;
 @mixin font-en-regular() {
   font-family: $font-family-en;
   font-weight: 400;
+  .-sans-serif & {
+    font-family: sans-serif;
+  }
+  .-serif & {
+    font-family: serif;
+  }
+  .-mono & {
+    font-family: monospace;
+  }
 }
 
 /// @group font
 @mixin font-en-medium() {
   font-family: $font-family-en;
   font-weight: 500;
+  .-sans-serif & {
+    font-family: sans-serif;
+  }
+  .-serif & {
+    font-family: serif;
+  }
+  .-mono & {
+    font-family: monospace;
+  }
 }
 
 /// @group font
 @mixin font-en-semi-bold() {
   font-family: $font-family-en;
   font-weight: 600;
+  .-sans-serif & {
+    font-family: sans-serif;
+  }
+  .-serif & {
+    font-family: serif;
+  }
+  .-mono & {
+    font-family: monospace;
+  }
 }
 
 /// @group font
 @mixin font-en-bold() {
   font-family: $font-family-en;
   font-weight: 700;
+  .-sans-serif & {
+    font-family: sans-serif;
+  }
+  .-serif & {
+    font-family: serif;
+  }
+  .-mono & {
+    font-family: monospace;
+  }
 }
 
 /// @group font
 @mixin font-en-extra-bold() {
   font-family: $font-family-en;
   font-weight: 800;
+  .-sans-serif & {
+    font-family: sans-serif;
+  }
+  .-serif & {
+    font-family: serif;
+  }
+  .-mono & {
+    font-family: monospace;
+  }
 }
 
 /// @group font
 @mixin font-en() {
   @include font-en-regular();
+  .-sans-serif & {
+    font-family: sans-serif;
+  }
+  .-serif & {
+    font-family: serif;
+  }
+  .-mono & {
+    font-family: monospace;
+  }
 }
 
 /// 縁取り（透過）

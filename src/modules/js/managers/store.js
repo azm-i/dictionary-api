@@ -1,13 +1,13 @@
 const store = (window.sdStore = window.sdStore || {
-  designWidthPc: 1600,
+  designWidthPc: 1440,
   designHeightPc: 964,
   // designWidthSp: 750 / 2,
   designWidthSp: 828 / 2,
   designHeightSp: 1506 / 2,
   breakpoint: 768,
   baseWidthMinPc: 1200,
-  pageId: '',
-  pageIdPrev: '',
+  pageId: "",
+  pageIdPrev: "",
   cScroll: null,
   scrollY: 0, // 現在のスクロールの位置（スムーススクロール有効なときはスムーススクロールの位置、無効なときはブラウザネイティブのスクロール位置）
   scrollYSmooth: 0, // 現在のスムーススクロールの位置
@@ -23,9 +23,9 @@ const store = (window.sdStore = window.sdStore || {
   isPopstate: false,
   isScrollAnimating: false, // スムーススクロールしているとき
   kgl: null,
-  elTransitionContents: document.querySelector('[data-transition-contents]'),
+  elTransitionContents: document.querySelector("[data-transition-contents]"),
   isActiveTypekit: false,
   isHorizontalScroll: false,
-})
+});
 
-export default store
+export default store;

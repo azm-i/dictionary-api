@@ -50,8 +50,10 @@ html {
 
 body {
   color: $color-font;
+  background: white;
+  transition: color 0.2s ease-out, background 0.2s ease-out;
   font-family: $font-family-gothic;
-  font-feature-settings: 'palt';
+  font-feature-settings: "palt";
   @include media-pc {
     @include font-size-variable-pc($font-size-base-px);
     // min-width: $base-width-min;
@@ -62,5 +64,19 @@ body {
 
   html.-full & {
     height: 100%;
+  }
+  &.-dark {
+    color: white;
+    background: black;
+    transition: color 0.2s ease-out, background 0.2s ease-out;
+  }
+  &.-sans-serif {
+    font-family: sans-serif;
+  }
+  &.-serif {
+    font-family: serif;
+  }
+  &.-mono {
+    font-family: monospace;
   }
 }

@@ -1,19 +1,24 @@
-@import '~/abstracts/**/*.scss';
-@import '~/motions/*.scss';
+@import "~/abstracts/**/*.scss";
+@import "~/motions/*.scss";
 
-@import '~/foundation/reset.scss';
-@import '~/foundation/add.scss';
-@import '~/foundation/keyframes.scss';
-@import '~/foundation/base.scss';
-@import '~/foundation/helper.scss';
+@import "~/foundation/reset.scss";
+@import "~/foundation/add.scss";
+@import "~/foundation/keyframes.scss";
+@import "~/foundation/base.scss";
+@import "~/foundation/helper.scss";
 
 // @import '~/vendors/locomotive-scroll.scss';
 // @import '~/vendors/pace.scss';
 // @import '~/vendors/swiper.scss';
 // @import '~/vendors/dat-gui.scss';
 
-@import '~/components/*.scss';
+@import "~/components/*.scss";
 
 //
 // styles
 //
+
+body {
+  @include font-en();
+  color: #2d2d2d;
+}

@@ -1,5 +1,177 @@
-$component: '.cHeader';
+$component: ".cHeader";
 
 #{$component} {
-  //
+  &-inner {
+    @include media-pc {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: size-variable-pc(738);
+      margin: auto;
+      padding-top: size-variable-pc(58);
+    }
+  }
+  &-logo {
+    @include media-pc {
+      display: block;
+      width: size-variable-pc(34);
+    }
+    &-svg {
+      width: 100%;
+      height: auto;
+      color: #757575;
+    }
+  }
+  &-settings {
+    display: flex;
+  }
+  &-selectbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #979797;
+    appearance: none;
+    @include media-pc {
+      padding-right: size-variable-pc(20);
+    }
+    &-select {
+      appearance: none;
+      height: 100%;
+      @include media-pc {
+        width: size-variable-pc(150);
+        padding: size-variable-pc(10) size-variable-pc(20) size-variable-pc(10)
+          size-variable-pc(20);
+        @include font-size-variable-pc(18);
+        @include font-en-bold();
+      }
+      .-sans-serif {
+        font-family: sans-serif;
+      }
+      .-serif {
+        font-family: serif;
+      }
+      .-mono {
+        font-family: monospace;
+      }
+    }
+    &-arrow {
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      color: #a445ed;
+      @include media-pc {
+        width: size-variable-pc(12);
+        right: size-variable-pc(33);
+      }
+    }
+    &-svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &-darkmode {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include media-pc {
+      width: size-variable-pc(80);
+      margin-left: size-variable-pc(30);
+    }
+    &-button {
+      @include media-pc {
+        width: size-variable-pc(50);
+        height: size-variable-pc(25);
+      }
+    }
+    &-input {
+      display: none;
+      &[type="checkbox"] {
+        position: absolute;
+        visibility: hidden;
+        &:checked {
+          + #{$component}-darkmode-label {
+            &::before {
+              background: #a445ed;
+            }
+            &::after {
+              content: "";
+              @include media-pc {
+                right: size-variable-pc(5);
+              }
+            }
+          }
+        }
+      }
+    }
+    &-label {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #757575;
+        @include media-pc {
+          border-radius: size-variable-pc(30);
+        }
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        transition: background 0.2s ease-out, right 0.2s ease-out;
+        border-radius: 50%;
+        background: white;
+        @include media-pc {
+          right: size-variable-pc(27);
+          width: size-variable-pc(18);
+          height: size-variable-pc(18);
+        }
+      }
+    }
+    &-icon {
+      position: relative;
+      @include media-pc {
+        width: size-variable-pc(25);
+        height: size-variable-pc(25);
+      }
+    }
+    &-moon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #a445ed;
+      opacity: 1;
+      transition: opacity 0.2s ease-out;
+      @include media-pc {
+        width: size-variable-pc(25);
+        height: size-variable-pc(25);
+      }
+      .-light & {
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+      }
+    }
+    &-sun {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #757575;
+      opacity: 1;
+      transition: opacity 0.2s ease-out;
+      @include media-pc {
+        width: size-variable-pc(25);
+        height: size-variable-pc(25);
+      }
+      .-dark & {
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+      }
+    }
+  }
 }

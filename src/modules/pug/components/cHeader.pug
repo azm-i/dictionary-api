@@ -1,8 +1,20 @@
 mixin cHeader(option = {})
-  header.cHeader(data-el)&attributes(attributes)
-    a.cHeader-link(href=getFullPath("/") data-anchor-offset)
-      #{ID === 'pIndex' ? 'h1' : 'p'}.cHeader-logo
-        | header
-
-    //- a.cHeader-menu(data-modal-trigger="menu")
-    //-   p MENU
+  header.cHeader(data-el data-header)&attributes(attributes)
+    .cHeader-inner
+      a.cHeader-logo(href=getFullPath("/") data-anchor-offset)
+        +svg({name: 'iconoir_book', alt: 'logo'}).cHeader-logo-svg
+      .cHeader-settings
+        .cHeader-selectbox
+          select.cHeader-selectbox-select(data-select)
+            option(value="Sans serif").cHeader-selectbox-option.-sans-serif Sans serif
+            option(value="Serif").cHeader-selectbox-option.-serif Serif
+            option(value="Mono").cHeader-selectbox-option.-mono Mono
+          .cHeader-selectbox-arrow
+            +svg({name: 'iconoir_arrow'}).cHeader-selectbox-svg
+        .cHeader-darkmode
+          .cHeader-darkmode-button
+            input(type="checkbox" id="switch" name="mode" data-toggle).cHeader-darkmode-input
+            label(for="switch").cHeader-darkmode-label
+          .cHeader-darkmode-icon
+            +svg({name: 'iconoir_sun', alt: 'light'}).cHeader-darkmode-sun
+            +svg({name: 'iconoir_half-moon', alt: 'dark'}).cHeader-darkmode-moon.-dark

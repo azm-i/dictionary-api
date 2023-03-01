@@ -1,0 +1,281 @@
+$component: ".lForm";
+
+#{$component} {
+  margin: auto;
+  @include media-pc {
+    width: size-variable-pc(738);
+    padding-top: size-variable-pc(48);
+    padding-bottom: size-variable-pc(150);
+  }
+  &-search {
+    &-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    &-textbox {
+      width: 100%;
+      color: #2d2d2d;
+      background-color: #f4f4f4;
+      transition: background-color 0.2s ease-out;
+      @include media-pc {
+        @include font-size-variable-pc(20);
+        @include font-en-bold();
+        height: size-variable-pc(64);
+        padding: 0 size-variable-pc(24);
+        border-radius: size-variable-pc(10);
+      }
+      .-dark & {
+        background-color: #1f1f1f;
+        color: white;
+        transition: background-color 0.2s ease-out;
+      }
+      &:focus {
+        outline: 1px solid #a445ed;
+      }
+    }
+    &-button {
+      position: absolute;
+      top: 50%;
+      @include media-pc {
+        width: size-variable-pc(20);
+        height: size-variable-pc(20);
+        transform: translateY(-50%);
+        right: size-variable-pc(24);
+        cursor: pointer;
+      }
+    }
+    &-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #a445ed;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &-contents {
+    @include media-pc {
+      margin-top: size-variable-pc(52);
+    }
+  }
+  &-result {
+    &:not(:first-of-type) {
+      @include media-pc {
+        margin-top: size-variable-pc(100);
+      }
+    }
+  }
+  &-words {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-text {
+    }
+  }
+  &-button {
+    position: relative;
+    background-color: rgba(#a445ed, 0.2);
+    border-radius: 50%;
+    transition: background-color 0.2s ease-out;
+    @include media-pc {
+      width: size-variable-pc(75);
+      height: size-variable-pc(75);
+      margin-top: size-variable-pc(-5);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      mask: url("/assets/img/common/iconoir_play.svg");
+      background-color: #a445ed;
+      transition: background-color 0.2s ease-out;
+      @include media-pc {
+        width: size-variable-pc(21);
+        height: size-variable-pc(21);
+        margin-left: size-variable-pc(3);
+      }
+    }
+    .-dark & {
+      background-color: #a445ed;
+      transition: background-color 0.2s ease-out;
+      &::after {
+        background-color: white;
+        transition: background-color 0.2s ease-out;
+      }
+    }
+  }
+  &-keyword {
+    @include font-en-bold();
+    @include media-pc {
+      @include font-size-variable-pc(64);
+    }
+  }
+  &-phonetic {
+    color: #a445ed;
+    @include media-pc {
+      @include font-size-variable-pc(24);
+      margin-top: size-variable-pc(17);
+    }
+  }
+  &-description {
+    @include media-pc {
+      margin-top: size-variable-pc(43);
+    }
+  }
+  &-part {
+    @include media-pc {
+      &:not(:first-of-type) {
+        margin-top: size-variable-pc(42);
+      }
+    }
+    &-title {
+      position: relative;
+      overflow: hidden;
+      @include font-en-bold();
+      font-style: italic;
+      @include media-pc {
+        @include font-size-variable-pc(24);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: translateY(-50%);
+        top: 50%;
+        border-top: 1px solid #e9e9e9;
+        margin-left: size-variable-pc(10);
+      }
+    }
+    &-lead {
+      color: #757575;
+      @include media-pc {
+        @include font-size-variable-pc(20);
+        margin-top: size-variable-pc(46);
+      }
+    }
+    &-list {
+      @include media-pc {
+        margin-top: size-variable-pc(26);
+        margin-left: size-variable-pc(48);
+        padding-bottom: size-variable-pc(67);
+      }
+    }
+    &-item {
+      position: relative;
+      &:not(:first-of-type) {
+        @include media-pc {
+          margin-top: size-variable-pc(20);
+        }
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background-color: #a445ed;
+        @include media-pc {
+          top: size-variable-pc(10);
+          left: size-variable-pc(-25);
+          width: size-variable-pc(5);
+          height: size-variable-pc(5);
+        }
+      }
+      &-text {
+        @include media-pc {
+          @include font-size-variable-pc(18);
+          line-height: 1.3;
+          @include tracking(-5);
+        }
+      }
+      &-example {
+        color: #757575;
+        @include media-pc {
+          @include font-size-variable-pc(18);
+          line-height: 1.3;
+          @include tracking(-5);
+          margin-top: size-variable-pc(6);
+        }
+      }
+      &-synonyms {
+        display: flex;
+        line-height: 1.3;
+        @include media-pc {
+          margin-top: size-variable-pc(12);
+        }
+        &-lead {
+          color: #757575;
+          align-self: flex-start;
+          @include media-pc {
+            @include font-size-variable-pc(16);
+          }
+        }
+        &-words {
+          color: #a445ed;
+          display: flex;
+          flex-wrap: wrap;
+          @include media-pc {
+            margin-left: size-variable-pc(15);
+            @include font-size-variable-pc(16);
+            @include tracking(10);
+          }
+        }
+        &-word {
+          color: #a445ed;
+          border-bottom: 1px solid #a445ed;
+          &:not(:last-of-type) {
+            @include media-pc {
+              margin-right: size-variable-pc(7);
+            }
+          }
+        }
+      }
+    }
+    &-synonyms {
+      display: flex;
+      line-height: 1.3;
+      &-lead {
+        color: #757575;
+        align-self: flex-start;
+        @include media-pc {
+          @include font-size-variable-pc(20);
+        }
+      }
+      &-words {
+        color: #a445ed;
+        display: flex;
+        flex-wrap: wrap;
+        @include media-pc {
+          margin-left: size-variable-pc(22);
+          @include font-size-variable-pc(20);
+          @include tracking(10);
+        }
+      }
+      &-link {
+        border-bottom: 1px solid #a445ed;
+        &:not(:last-of-type) {
+          @include media-pc {
+            margin-right: size-variable-pc(15);
+          }
+        }
+      }
+    }
+  }
+  &-source {
+    display: flex;
+    color: #757575;
+    @include media-pc {
+      @include font-size-variable-pc(20);
+      @include tracking(10);
+    }
+    &-lead {
+      @include media-pc {
+        margin-right: size-variable-pc(22);
+      }
+    }
+    &-link {
+      color: #1f1f1f;
+      border-bottom: 1px solid #1f1f1f;
+    }
+  }
+}

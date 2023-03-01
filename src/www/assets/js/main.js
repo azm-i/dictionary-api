@@ -1,17 +1,17 @@
-import init from '~/core'
+import init from "~/core";
 
 // import WithComponent from '~/highway/WithComponent'
 
 // scroll
 // import Scroll from '~/scroll/Scroll'
-import Scroll from '~/scroll/ScrollLocomotive'
+import Scroll from "~/scroll/ScrollLocomotive";
 
 // permanent components
-// import CHeader from '~/components/cHeader'
+import CHeader from "~/components/cHeader";
 
 // functions
-import AnchorLink from '~/functions/AnchorLink'
-import ModalTrigger from '~/functions/ModalTrigger'
+import AnchorLink from "~/functions/AnchorLink";
+import ModalTrigger from "~/functions/ModalTrigger";
 // import ScrollFixed from '~/functions/ScrollFixed'
 // import ScrollSticky from '~/functions/ScrollSticky'
 
@@ -24,9 +24,7 @@ import ModalTrigger from '~/functions/ModalTrigger'
 
 init({
   Scroll,
-  permanentComponents: [
-    // CHeader,
-  ],
+  permanentComponents: [CHeader],
   components: [
     AnchorLink,
     ModalTrigger,
@@ -40,4 +38,4 @@ init({
   //   //   menu: WithComponent, // メニュー内リンククリック時のアニメーション
   //   // },
   // },
-})
+});
