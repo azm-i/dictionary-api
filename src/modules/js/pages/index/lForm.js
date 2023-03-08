@@ -209,6 +209,8 @@ export default class LForm extends Component {
               source_links.appendChild(source_link);
               source_link.className = "lForm-source-link";
               source_link.textContent = item;
+              source_link.setAttribute("href", item);
+              source_link.setAttribute("target", "_blank");
             });
           }
         });

@@ -224,9 +224,9 @@ mixin lForm(option = {})
                       li.lForm-part-item
                         p.lForm-part-item-text=definitionItem.definition
                         if definitionItem.synonyms.length > 0
-                          a.lForm-part-item-synonyms-word(href="")=definitionItem.synonyms
+                          a.lForm-part-item-synonyms-word=definitionItem.synonyms
                         if definitionItem.antonyms.length > 0
-                          a.lForm-part-item-antonyms-word(href="")=definitionItem.antonyms
+                          a.lForm-part-item-antonyms-word=definitionItem.antonyms
                   if meaningsItem.antonyms.length > 0
                     .lForm-part-synonyms
                       h5.lForm-part-synonyms-lead Synonyms
