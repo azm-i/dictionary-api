@@ -7,6 +7,11 @@ $component: ".lForm";
     padding-top: size-variable-pc(48);
     padding-bottom: size-variable-pc(150);
   }
+  @include media-sp {
+    width: size-variable-sp(730);
+    padding-top: size-variable-sp(48);
+    padding-bottom: size-variable-sp(150);
+  }
   &-search {
     &-wrapper {
       position: relative;
@@ -17,12 +22,18 @@ $component: ".lForm";
       color: #2d2d2d;
       background-color: #f4f4f4;
       transition: background-color 0.2s ease-out;
+      @include font-en-bold();
       @include media-pc {
         @include font-size-variable-pc(20);
-        @include font-en-bold();
         height: size-variable-pc(64);
         padding: 0 size-variable-pc(24);
         border-radius: size-variable-pc(10);
+      }
+      @include media-sp {
+        @include font-size-variable-sp(28);
+        height: size-variable-sp(100);
+        padding: 0 size-variable-sp(54);
+        border-radius: size-variable-sp(30);
       }
       .-dark & {
         background-color: #1f1f1f;
@@ -48,6 +59,10 @@ $component: ".lForm";
         @include font-size-variable-pc(20);
         margin-top: size-variable-pc(5);
       }
+      @include media-sp {
+        @include font-size-variable-sp(25);
+        margin-top: size-variable-sp(10);
+      }
     }
     &-button {
       position: absolute;
@@ -58,6 +73,12 @@ $component: ".lForm";
         transform: translateY(-50%);
         right: size-variable-pc(24);
         cursor: pointer;
+      }
+      @include media-sp {
+        width: size-variable-sp(40);
+        height: size-variable-sp(40);
+        transform: translateY(-50%);
+        right: size-variable-sp(54);
       }
     }
     &-icon {
@@ -73,11 +94,17 @@ $component: ".lForm";
     @include media-pc {
       margin-top: size-variable-pc(52);
     }
+    @include media-sp {
+      margin-top: size-variable-sp(75);
+    }
   }
   &-result {
     &:not(:first-of-type) {
       @include media-pc {
         margin-top: size-variable-pc(100);
+      }
+      @include media-sp {
+        margin-top: size-variable-sp(100);
       }
     }
   }
@@ -85,8 +112,6 @@ $component: ".lForm";
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &-text {
-    }
   }
   &-button {
     position: relative;
@@ -97,6 +122,11 @@ $component: ".lForm";
       width: size-variable-pc(75);
       height: size-variable-pc(75);
       margin-top: size-variable-pc(-5);
+    }
+    @include media-sp {
+      width: size-variable-sp(110);
+      height: size-variable-sp(110);
+      margin-top: size-variable-sp(-14);
     }
     &::after {
       content: "";
@@ -112,12 +142,20 @@ $component: ".lForm";
         height: size-variable-pc(21);
         margin-left: size-variable-pc(3);
       }
+      @include media-sp {
+        width: size-variable-sp(30);
+        height: size-variable-sp(30);
+        margin-left: size-variable-sp(4);
+      }
     }
   }
   &-keyword {
     @include font-en-bold();
     @include media-pc {
       @include font-size-variable-pc(64);
+    }
+    @include media-sp {
+      @include font-size-variable-sp(60);
     }
   }
   &-phonetic {
@@ -126,25 +164,38 @@ $component: ".lForm";
       @include font-size-variable-pc(24);
       margin-top: size-variable-pc(17);
     }
+    @include media-sp {
+      @include font-size-variable-sp(40);
+      margin-top: size-variable-sp(34);
+    }
   }
   &-description {
     @include media-pc {
       margin-top: size-variable-pc(43);
     }
+    @include media-sp {
+      margin-top: size-variable-sp(80);
+    }
   }
   &-part {
-    @include media-pc {
-      &:not(:first-of-type) {
+    &:not(:first-of-type) {
+      @include media-pc {
         margin-top: size-variable-pc(42);
+      }
+      @include media-sp {
+        margin-top: size-variable-sp(82);
       }
     }
     &-title {
       position: relative;
       overflow: hidden;
       @include font-en-bold();
-      font-style: italic;
       @include media-pc {
+        font-style: italic;
         @include font-size-variable-pc(24);
+      }
+      @include media-sp {
+        @include font-size-variable-sp(35);
       }
       &::after {
         content: "";
@@ -162,11 +213,19 @@ $component: ".lForm";
         @include font-size-variable-pc(20);
         margin-top: size-variable-pc(46);
       }
+      @include media-sp {
+        @include font-size-variable-sp(32);
+        margin-top: size-variable-sp(80);
+      }
     }
     &-list {
       @include media-pc {
         margin-top: size-variable-pc(26);
         margin-left: size-variable-pc(48);
+      }
+      @include media-sp {
+        margin-top: size-variable-sp(44);
+        margin-left: size-variable-sp(60);
       }
     }
     &-item {
@@ -174,6 +233,9 @@ $component: ".lForm";
       &:not(:first-of-type) {
         @include media-pc {
           margin-top: size-variable-pc(20);
+        }
+        @include media-sp {
+          margin-top: size-variable-sp(36);
         }
       }
       &::before {
@@ -187,12 +249,23 @@ $component: ".lForm";
           width: size-variable-pc(5);
           height: size-variable-pc(5);
         }
+        @include media-sp {
+          top: size-variable-sp(20);
+          left: size-variable-sp(-55);
+          width: size-variable-sp(10);
+          height: size-variable-sp(10);
+        }
       }
       &-text {
         @include media-pc {
           @include font-size-variable-pc(18);
           line-height: 1.3;
           @include tracking(-5);
+        }
+        @include media-sp {
+          @include font-size-variable-sp(30);
+          line-height: 1.6;
+          @include tracking(30);
         }
       }
       &-example {
@@ -203,12 +276,21 @@ $component: ".lForm";
           @include tracking(-5);
           margin-top: size-variable-pc(6);
         }
+        @include media-sp {
+          @include font-size-variable-sp(30);
+          line-height: 1.6;
+          @include tracking(30);
+          margin-top: size-variable-sp(6);
+        }
       }
       &-synonyms {
         display: flex;
         line-height: 1.3;
         @include media-pc {
           margin-top: size-variable-pc(12);
+        }
+        @include media-sp {
+          margin-top: size-variable-sp(12);
         }
         &-lead {
           color: #757575;
@@ -244,11 +326,17 @@ $component: ".lForm";
       @include media-pc {
         margin-top: size-variable-pc(30);
       }
+      @include media-sp {
+        margin-top: size-variable-sp(54);
+      }
       &-lead {
         color: #757575;
         align-self: flex-start;
         @include media-pc {
           @include font-size-variable-pc(20);
+        }
+        @include media-sp {
+          @include font-size-variable-sp(30);
         }
       }
       &-words {
@@ -259,6 +347,11 @@ $component: ".lForm";
           margin-left: size-variable-pc(22);
           @include font-size-variable-pc(20);
           @include tracking(10);
+        }
+        @include media-sp {
+          margin-left: size-variable-sp(84);
+          @include font-size-variable-sp(30);
+          @include tracking(30);
         }
       }
       &-link {
