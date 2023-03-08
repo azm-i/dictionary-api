@@ -273,6 +273,14 @@ export default class LForm extends Component {
         search_empty.textContent = "Whoops, can’t be empty…";
         return;
       } else if (
+        this.word.value.length !== 0 &&
+        document.querySelector(".lForm-search-empty") !== null
+      ) {
+        const search_empty = document.querySelector(".lForm-search-empty");
+        console.log(search_empty);
+        this.word.classList.remove("-empty");
+        search_empty.remove();
+      } else if (
         this.word.value.length === 0 &&
         document.querySelector(".lForm-search-empty") !== null
       ) {
@@ -295,6 +303,14 @@ export default class LForm extends Component {
           search_empty.className = "lForm-search-empty";
           search_empty.textContent = "Whoops, can’t be empty…";
           return;
+        } else if (
+          this.word.value.length !== 0 &&
+          document.querySelector(".lForm-search-empty") !== null
+        ) {
+          const search_empty = document.querySelector(".lForm-search-empty");
+          console.log(search_empty);
+          this.word.classList.remove("-empty");
+          search_empty.remove();
         } else if (
           this.word.value.length === 0 &&
           document.querySelector(".lForm-search-empty") !== null
