@@ -35,8 +35,18 @@ $component: ".lForm";
       &.-dummy {
         display: none;
       }
+      &.-empty {
+        outline: 1px solid #ff5252;
+      }
       &::-webkit-search-cancel-button {
         -webkit-appearance: none;
+      }
+    }
+    &-empty {
+      color: #ff5252;
+      @include media-pc {
+        @include font-size-variable-pc(20);
+        margin-top: size-variable-pc(5);
       }
     }
     &-button {

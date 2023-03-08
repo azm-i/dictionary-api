@@ -8,6 +8,7 @@ export default class LForm extends Component {
   static selectorRoot = "[data-form]";
 
   onInit() {
+    this.form = this.el.querySelector("[data-form-search]");
     this.contents = this.el.querySelector("[data-form-contents]");
     this.button = this.el.querySelector("[data-form-search-button]");
     this.word = this.el.querySelector("[data-form-search-textbox]");
@@ -261,6 +262,22 @@ export default class LForm extends Component {
       }
     };
     this.button.addEventListener("click", () => {
+      if (
+        this.word.value.length === 0 &&
+        document.querySelector(".lForm-search-empty") === null
+      ) {
+        this.word.classList.add("-empty");
+        const search_empty = document.createElement("p");
+        this.form.appendChild(search_empty);
+        search_empty.className = "lForm-search-empty";
+        search_empty.textContent = "Whoops, can’t be empty…";
+        return;
+      } else if (
+        this.word.value.length === 0 &&
+        document.querySelector(".lForm-search-empty") !== null
+      ) {
+        return;
+      }
       url =
         "https://api.dictionaryapi.dev/api/v2/entries/en/" + this.word.value;
       postFetch(url);
@@ -268,6 +285,22 @@ export default class LForm extends Component {
     this.word.onkeypress = (e) => {
       const key = e.keyCode || e.charCode || 0;
       if (key == 13) {
+        if (
+          this.word.value.length === 0 &&
+          document.querySelector(".lForm-search-empty") === null
+        ) {
+          this.word.classList.add("-empty");
+          const search_empty = document.createElement("p");
+          this.form.appendChild(search_empty);
+          search_empty.className = "lForm-search-empty";
+          search_empty.textContent = "Whoops, can’t be empty…";
+          return;
+        } else if (
+          this.word.value.length === 0 &&
+          document.querySelector(".lForm-search-empty") !== null
+        ) {
+          return;
+        }
         url =
           "https://api.dictionaryapi.dev/api/v2/entries/en/" + this.word.value;
         postFetch(url);
