@@ -174,7 +174,7 @@ $component: ".lForm";
       margin-top: size-variable-pc(43);
     }
     @include media-sp {
-      margin-top: size-variable-sp(80);
+      margin-top: size-variable-sp(60);
     }
   }
   &-part {
@@ -215,7 +215,7 @@ $component: ".lForm";
       }
       @include media-sp {
         @include font-size-variable-sp(32);
-        margin-top: size-variable-sp(80);
+        margin-top: size-variable-sp(60);
       }
     }
     &-list {
@@ -449,6 +449,9 @@ $component: ".lForm";
       @include media-pc {
         @include font-size-variable-pc(70);
       }
+      @include media-sp {
+        @include font-size-variable-sp(100);
+      }
     }
     &-lead {
       @include font-en-bold();
@@ -456,12 +459,21 @@ $component: ".lForm";
         margin-top: size-variable-pc(40);
         @include font-size-variable-pc(22);
       }
+      @include media-sp {
+        margin-top: size-variable-sp(50);
+        @include font-size-variable-sp(35);
+      }
     }
     &-text {
       color: #757575;
       @include media-pc {
         margin-top: size-variable-pc(30);
         @include font-size-variable-pc(18);
+        line-height: 1.3;
+      }
+      @include media-sp {
+        margin-top: size-variable-sp(30);
+        @include font-size-variable-sp(30);
         line-height: 1.3;
       }
     }
