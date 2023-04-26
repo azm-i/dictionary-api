@@ -401,24 +401,46 @@ $component: ".lForm";
     color: #757575;
     line-height: 1.5;
     border-top: 1px solid #e9e9e9;
+    @include tracking(10);
     @include media-pc {
       @include font-size-variable-pc(20);
-      @include tracking(10);
       margin-top: size-variable-pc(50);
       padding-top: size-variable-pc(30);
+    }
+    @include media-sp {
+      @include font-size-variable-sp(28);
+      margin-top: size-variable-sp(50);
+      padding-top: size-variable-sp(30);
     }
     &-lead {
       @include media-pc {
         margin-right: size-variable-pc(22);
       }
+      @include media-sp {
+        margin-right: size-variable-sp(15);
+      }
     }
     &-links {
       display: flex;
+      align-items: center;
       flex-wrap: wrap;
     }
     &-link {
       color: #1f1f1f;
       border-bottom: 1px solid #1f1f1f;
+    }
+    &-icon {
+      background-image: url("/assets/img/common/iconoir_external.svg");
+      @include media-pc {
+        width: size-variable-pc(24);
+        height: size-variable-pc(24);
+        margin-left: size-variable-pc(10);
+      }
+      @include media-sp {
+        width: size-variable-sp(30);
+        height: size-variable-sp(30);
+        margin-left: size-variable-sp(10);
+      }
     }
   }
   &-notfound {

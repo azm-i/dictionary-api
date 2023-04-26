@@ -212,6 +212,9 @@ export default class LForm extends Component {
               source_link.textContent = item;
               source_link.setAttribute("href", item);
               source_link.setAttribute("target", "_blank");
+              const source_icon = document.createElement("span");
+              source_links.appendChild(source_icon);
+              source_icon.className = "lForm-source-icon";
             });
           }
         });
